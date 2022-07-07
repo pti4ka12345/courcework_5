@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+
+  webapp:
+    image: pti4ka12345/test_image
+    command: gunicorn game.app:app -b 0.0.0.0:5000
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+
+
+
+
